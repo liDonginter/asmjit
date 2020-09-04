@@ -216,16 +216,17 @@ if(NOT ASMJIT_EMBED)
     "${ASMJIT_PRIVATE_CFLAGS_DBG}"
     "${ASMJIT_PRIVATE_CFLAGS_REL}")
 
-  foreach(_src_file ${ASMJIT_SRC})
-    get_filename_component(_src_dir ${_src_file} PATH)
-    get_filename_component(_src_name ${_src_file} NAME)
-    string(REGEX REPLACE "^${ASMJIT_SOURCE_DIR}/" "" targetpath "${_src_dir}")
-    if("${_src_name}" MATCHES ".h$")
-      if(NOT "${_src_name}" MATCHES "_p.h$")
-        install(FILES ${_src_file} DESTINATION "include/${targetpath}")
-      endif()
-    endif()
-  endforeach()
+  # Skip header installation for Mitsuba 2
+  # foreach(_src_file ${ASMJIT_SRC})
+  #   get_filename_component(_src_dir ${_src_file} PATH)
+  #   get_filename_component(_src_name ${_src_file} NAME)
+  #   string(REGEX REPLACE "^${ASMJIT_SOURCE_DIR}/" "" targetpath "${_src_dir}")
+  #   if("${_src_name}" MATCHES ".h$")
+  #     if(NOT "${_src_name}" MATCHES "_p.h$")
+  #       install(FILES ${_src_file} DESTINATION "include/${targetpath}")
+  #     endif()
+  #   endif()
+  # endforeach()
 
   # Add `asmjit` tests and samples.
   if(ASMJIT_BUILD_TEST)

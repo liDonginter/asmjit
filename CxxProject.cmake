@@ -303,9 +303,9 @@ if (NOT __CXX_INCLUDED)
     endif()
 
     if(NOT ${PRODUCT}_STATIC)
-      install(TARGETS ${target} RUNTIME DESTINATION "bin"
-                                LIBRARY DESTINATION "lib${LIB_SUFFIX}"
-                                ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
+      # install(TARGETS ${target} RUNTIME DESTINATION "bin"
+      #                           LIBRARY DESTINATION "lib${LIB_SUFFIX}"
+      #                           ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
     endif()
   endfunction()
 
@@ -328,8 +328,8 @@ if (NOT __CXX_INCLUDED)
       target_compile_options(${target} PRIVATE ${cflags} $<$<CONFIG:Debug>:${cflags_dbg}> $<$<NOT:$<CONFIG:Debug>>:${cflags_rel}>)
     endif()
 
-    if(NOT ${PRODUCT}_STATIC)
-      install(TARGETS ${target} DESTINATION "lib${LIB_SUFFIX}")
-    endif()
+    # if(NOT ${PRODUCT}_STATIC)
+    #   install(TARGETS ${target} DESTINATION "lib${LIB_SUFFIX}")
+    # endif()
   endfunction()
 endif()
